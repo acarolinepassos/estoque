@@ -6,6 +6,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 
+
 namespace Database
 {
     public class MongoConnection
@@ -46,9 +47,46 @@ namespace Database
             }
         }
 
+<<<<<<< HEAD
         private class MongoClient
         {
             private object connectionString;
+=======
+        public static bool DeleteOne<BsonDocument>(string name, FilterDefinition<BsonDocument> filter)
+        {
+            try
+            {
+                IMongoDatabase _database = GetConnection();
+
+                var collection = _database.GetCollection<BsonDocument>(name);
+                collection.DeleteOne(filter);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static bool ReplaceOne<BsonDocument>(string name, FilterDefinition<BsonDocument> filter, BsonDocument document)
+        {
+            try
+            {
+                IMongoDatabase _database = GetConnection();
+
+                var collection = _database.GetCollection<BsonDocument>(name);
+                collection.ReplaceOne(filter, document);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+>>>>>>> 33590592705d603b83602c50adc4c26214cb35f9
 
             public MongoClient(object connectionString)
             {
