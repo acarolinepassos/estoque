@@ -1,4 +1,5 @@
 ﻿using Database.Properties;
+using DCouple.Mongo;
 using Model;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -45,6 +46,14 @@ namespace Database
             }
         }
 
+        private class MongoClient
+        {
+            private object connectionString;
 
+            public MongoClient(object connectionString)
+            {
+                this.connectionString = connectionString;
+            }
+        }
     }
 }
